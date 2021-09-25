@@ -74,7 +74,7 @@ export default async (msg: TelegramBot.Message) => {
         }
         const {chain, cleanup} = await processTgMessage(msg, fwd)
         const lastForwardOff = forwardOff[fwd.tg]
-        if (msg.text && msg.text.startsWith('/forwardon')) {
+        if (msg.text && msg.text.startsWith('/ghsoff')) {
             forwardOff[fwd.tg] = false
             chain.push({
                 type: 'text',
@@ -86,7 +86,7 @@ export default async (msg: TelegramBot.Message) => {
                 reply_to_message_id: msg.message_id,
             })
         }
-        else if (msg.text && msg.text.startsWith('/forwardoff')) {
+        else if (msg.text && msg.text.startsWith('/ghson')) {
             forwardOff[fwd.tg] = true
             chain.push({
                 type: 'text',
